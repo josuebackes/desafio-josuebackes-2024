@@ -37,7 +37,7 @@ describe('Recintos do Zoologico', () => {
         expect(resultado.recintosViaveis.length).toBe(3);
     });
     
-    /* Testes adicionais
+    /* Teste adiconais
 
     test('Deve rejeitar recinto com bioma inadequado', () => {
         const resultado = new RecintosZoo().analisaRecintos('LEAO', 1);
@@ -54,7 +54,7 @@ describe('Recintos do Zoologico', () => {
     test('Hipopótamos devem aceitar apenas o bioma savana e rio', () => {
         const resultado = new RecintosZoo().analisaRecintos('HIPOPOTAMO', 1);
         expect(resultado.erro).toBeFalsy();
-        expect(resultado.recintosViaveis.length).toBe(1);  // Apenas "savana e rio" é aceito
+        expect(resultado.recintosViaveis[0]).toBe('Recinto 3 (espaço livre: 0 total: 7)');  // Apenas "savana e rio" é aceito
     });
     
     test('Deve encontrar corretamente recinto para 1 macaco', () => {
@@ -64,10 +64,12 @@ describe('Recintos do Zoologico', () => {
         expect(resultado.recintosViaveis[1]).toBe('Recinto 3 (espaço livre: 3 total: 7)');  // Macaco sozinho não é aceito
     });    
     
-    test('Macaco se sente confortável com outra espécie', () => {
+    test('Macaco se sente confortável com outra espécie, herbivora', () => {
         const resultado = new RecintosZoo().analisaRecintos('MACACO', 2);
         expect(resultado.erro).toBeFalsy();
-        expect(resultado.recintosViaveis.length).toBeGreaterThan(0);  // Macaco com outro animal não carnívoro
+        expect(resultado.recintosViaveis[0]).toBe('Recinto 1 (espaço livre: 5 total: 10)'); // Macaco com outro animal não carnívoro
+        expect(resultado.recintosViaveis[1]).toBe('Recinto 2 (espaço livre: 3 total: 5)');  
+        expect(resultado.recintosViaveis[2]).toBe('Recinto 3 (espaço livre: 2 total: 7)');
     });
     
     test('Deve considerar espaço extra ao compartilhar recinto com outra espécie', () => {
@@ -80,6 +82,7 @@ describe('Recintos do Zoologico', () => {
         const resultado = new RecintosZoo().analisaRecintos('MACACO', 12);
         expect(resultado.erro).toBe("Não há recinto viável");  // Não pode dividir 12 macacos em dois recintos
     });
+    
     */
 });
 
